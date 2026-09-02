@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oil Boiler Service, Repair &amp; Tank Care | Pro Flame Gas Services</title>
+<meta name="description" content="OFTEC registered oil boiler servicing, repairs, installations and oil tank checks across BA, BS, GL and SN. Bunded tank inspections, full strip-down services and emergency oil heating repairs.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/proflame-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20260819b">
+<style>
+  /* Collapsible mobile nav */
+.mobile-nav .mn-group{position:relative;border-bottom:1px solid var(--border);}
+.mobile-nav .mn-parent{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  background:none;border:none;padding:13px 16px;font-weight:600;color:var(--navy-deep);
+  font-size:0.98rem;cursor:pointer;font-family:'Inter',sans-serif;text-align:left;
+}
+.mobile-nav .mn-parent:hover{background:var(--blue-soft);}
+.mn-caret{width:14px;height:14px;stroke:var(--navy);stroke-width:2.4;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;}
+.mn-group.open .mn-caret{transform:rotate(180deg);}
+.mn-submenu{display:none;background:#f8fafd;padding:6px 8px;}
+.mn-group.open .mn-submenu{display:block;}
+.mn-submenu a{
+  display:block;padding:10px 16px;margin-left:20px;border-radius:8px;
+  font-size:0.9rem;color:var(--muted);
+}
+.mn-submenu a:hover{background:var(--blue-soft);color:var(--red);}
+.mn-submenu a:last-child{margin-bottom:4px;}
+  /* Hero uses the client's own oil tank photo as the background */
+  .svc-hero{position:relative;overflow:hidden;color:#fff;padding:76px 0 68px;}
+  .svc-hero-bg{position:absolute;inset:0;background-image:url("assets/oil-tank.jpg");background-size:cover;background-position:center;}
+  .svc-hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg, rgba(8,26,63,0.95) 0%, rgba(12,37,89,0.88) 45%, rgba(20,56,127,0.55) 100%);}
+  .svc-hero .wrap{position:relative;z-index:2;}
+  .svc-hero h1{color:#fff;max-width:660px;}
+  .svc-hero p.lead{color:#d3e0f2;font-size:1.1rem;max-width:560px;}
+  .svc-back{display:inline-flex;align-items:center;gap:7px;color:#c3d3e5;font-size:0.86rem;font-weight:600;margin-bottom:14px;}
+  .svc-back:hover{color:#fff;}
+  .svc-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+
+  .svc-body{background:var(--bg);padding:64px 0 40px;}
+  .svc-grid{display:grid;grid-template-columns:1.25fr 0.75fr;gap:46px;align-items:start;}
+  @media(max-width:900px){.svc-grid{grid-template-columns:1fr;}}
+  .svc-copy h2{margin-top:34px;}
+  .svc-copy h2:first-child{margin-top:0;}
+  .svc-copy p{font-size:0.97rem;line-height:1.7;}
+  .svc-list{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:11px;}
+  /* icon is absolutely positioned so inline <strong> in the text does not
+     get treated as a separate flex item and break onto its own column */
+  .svc-list li{position:relative;padding-left:28px;font-size:0.95rem;color:var(--muted);line-height:1.6;}
+  .svc-list li .icon{position:absolute;left:0;top:3px;width:17px;height:17px;color:var(--success);stroke-width:2.6;}
+  .svc-list li strong{color:var(--navy-deep);}
+  .svc-list a{color:var(--navy-deep);font-weight:600;}
+  .svc-list a:hover{color:var(--red);}
+  .svc-aside{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px;}
+  .svc-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px;}
+  .svc-card h3{font-size:1.02rem;margin-bottom:10px;}
+  .svc-card img{width:100%;border-radius:10px;margin-bottom:14px;}
+  .svc-note{display:flex;gap:11px;align-items:flex-start;padding:14px 16px;border-radius:10px;
+            background:#fff8e6;border:1px solid #f2dda4;font-size:0.88rem;color:#7a5b12;line-height:1.55;margin-top:20px;}
+  .svc-note .icon{width:17px;height:17px;color:#b8860b;flex-shrink:0;margin-top:2px;}
+  @media(max-width:900px){.svc-aside{position:static;}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"My oil boiler stopped after the oil ran out - how do I get it going again?","acceptedAnswer":{"@type":"Answer","text":"When a tank runs dry, air gets into the fuel line, so the boiler will not fire even after a top-up. Press the burner reset button once. If it fires and stays lit, you are done. If it locks out again, the line needs bleeding to clear the airlock - a quick job for an OFTEC engineer. Do not keep pressing reset, as each attempt pumps unburnt oil into the combustion chamber."}},
+    {"@type":"Question","name":"Can any plumber fix an oil boiler?","acceptedAnswer":{"@type":"Answer","text":"No. A general plumber handles pipes, radiators and taps, but oil-fired appliances legally require an OFTEC registered technician trained on burners, fuel pumps, photocells and combustion. Pro Flame Gas Services is OFTEC registered and can service, repair, install and certify oil systems."}},
+    {"@type":"Question","name":"How often should an oil boiler be serviced?","acceptedAnswer":{"@type":"Answer","text":"Once a year. An annual service keeps the boiler safe and efficient, catches faults early, and keeps any manufacturer warranty valid - most warranties are void if a boiler misses its yearly service."}},
+    {"@type":"Question","name":"How long should a tank of oil last?","acceptedAnswer":{"@type":"Answer","text":"It depends on your home, the weather and how long the heating runs. As a rough example, a system burning around four litres an hour, run a few hours a day, uses a few hundred litres over a month in colder weather. Check your tank gauge regularly and order before it runs low."}},
+    {"@type":"Question","name":"Should I get a second opinion before replacing my oil boiler?","acceptedAnswer":{"@type":"Answer","text":"Yes. Oil boilers are robust and many faults quoted as needing replacement are actually a worn nozzle, dirty photocell, tired pump or blocked filter. Get an honest assessment of whether the boiler is worth repairing before committing to a replacement."}},
+    {"@type":"Question","name":"Does oil heating use much electricity?","acceptedAnswer":{"@type":"Answer","text":"Very little. The oil provides the heat; electricity only runs the burner, pump and controls, which draw a small amount of power. Your heating cost is overwhelmingly the oil, not the electricity."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="badges">
+      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Gas Safe Registered</span>
+      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 98% First Time Fix Rate</span>
+      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 1 Year Warranty on All Works</span>
+    </div>
+    <div>Covering BA · BS · GL · SN · <a href="tel:+447833722922">07833 722922</a></div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site">
+  <div class="wrap">
+    <div class="header-inner">
+      <a class="logo" href="index.html"><img src="assets/proflame-logo-long.jpg" alt="Pro Flame Gas Services South West"></a>
+      <nav class="main">
+        <div class="nav-item">
+          <a href="index.html#services">Services <svg class="nav-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+          <div class="nav-drop">
+            <a href="index.html#services"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>All Services</a>
+            <a href="oil-boilers-tanks.html"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Oil Boilers &amp; Tanks</a>
+            <a href="index.html#services"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>LPG Appliances</a>
+            <a href="index.html#services"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Safety Checks</a>
+            <a href="index.html#services"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Boiler Swaps</a>
+          </div>
+        </div>
+        <a href="index.html#pricing">Rates</a>
+        <a href="booking.php?t=S">Book</a>
+        <a href="index.html#our-work">Our Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#coverage">Areas</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="header-cta">
+        <div class="header-phone">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="txt"><small>Call · Text · WhatsApp</small><strong>07833 722922</strong></div>
+        </div>
+        <a href="tel:+447833722922" class="btn-pill"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Book Now</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="index.html#services">Services</a>
+      <a class="mn-sub" href="oil-boilers-tanks.html">Oil Boilers &amp; Tanks</a>
+      <a class="mn-sub" href="index.html#services">LPG Appliances</a>
+      <a class="mn-sub" href="index.html#services">Safety Checks</a>
+      <a href="index.html#pricing">Callout Rates</a>
+      <a href="booking.php?t=S">Book Online</a>
+      <a href="index.html#our-work">Our Work</a>
+      <a href="index.html#about">About Us</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#coverage">Areas Covered</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a class="mn-call" href="tel:+447833722922">Call 07833 722922</a>
+    </nav>
+  </div>
+</header>
+
+<section class="svc-hero">
+  <div class="svc-hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow" style="background:rgba(225,27,34,0.9);color:#fff;">OFTEC Registered</span>
+    <h1>Oil Boilers &amp; Tanks</h1>
+    <p class="lead">Servicing, repairs, installations and tank checks for oil-fired heating across BA, BS, GL and SN, carried out by OFTEC registered technicians.</p>
+    <div class="svc-hero-ctas">
+      <a href="tel:+447833722922" class="btn btn-primary">Call 07833 722922</a>
+      <a href="index.html#bookingForm" class="btn btn-ghost">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="svc-body">
+  <div class="wrap svc-grid">
+    <div class="svc-copy">
+      <h2>How does oil heating work?</h2>
+      <p>If your home is off the mains gas grid, as many rural properties across the South West are, oil is one of the most
+         common ways to heat it. The biggest difference from gas is simple: with gas, the fuel arrives through a pipe from the
+         street and you never think about it. With oil, the fuel lives on <em>your</em> property, in a tank you can see, and it is
+         delivered to you by tanker. That one difference is why oil systems need looking after a little more carefully, and why
+         it pays to understand how yours actually works.</p>
+      <p>Here is the journey your fuel takes, from the tank to a warm radiator:</p>
+      <ul class="svc-list">
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><strong>The tank.</strong> Your heating oil, kerosene (also called 28-second oil), is stored in a tank outside. A domestic tank commonly holds around 1,000 to 1,200 litres, though they range from a few hundred litres up to 2,500 and beyond. A tanker fills it through the fill point, and a vent at the top lets air escape safely as it fills.</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><strong>The filter and supply line.</strong> From the bottom of the tank the oil passes through a filter, which catches sludge and water before they reach the boiler, and then travels along a supply line, usually buried, all the way to the boiler.</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><strong>The burner.</strong> At the boiler, a pressure-jet burner atomises the oil into a fine mist and ignites it. This is the part best left to an engineer, because the burner has to be set up precisely to burn cleanly and efficiently.</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><strong>The heat exchanger.</strong> The flame heats water inside the boiler, which is then pumped around your home through the radiators, and into a hot water cylinder so you have hot water at the taps.</li>
+      </ul>
+      <p>In other words, an oil boiler is a &ldquo;wet&rdquo; heating system that works in exactly the same way a gas boiler does. It
+         burns fuel to heat water for your radiators and taps. The only real difference is that the fuel store, the filter and the
+         supply line are all yours, which makes an annual service more important, not less.</p>
+
+      <h2>Oil-fired boilers</h2>
+      <p>Oil boilers come as either <strong>heat-only</strong> (also called regular or conventional) models that work alongside a
+         hot water cylinder, or <strong>combi</strong> models that heat water on demand. Older non-condensing boilers wasted a
+         great deal of heat up the flue; a modern condensing oil boiler recovers much of that heat and can run at well over 90%
+         efficiency, which on an oil system, where you are paying for every litre, makes a real difference to your bills.</p>
+      <p>As an OFTEC registered business we can supply, install, service and repair oil-fired boilers, and self-certify the work so
+         you receive the correct building regulations notification without needing a separate inspection. We install quality
+         appliances from manufacturers such as Worcester Bosch, Grant and Warmflow, several of which carry extended manufacturer
+         guarantees when installed and serviced by a registered engineer.</p>
+
+      <h2>What an oil boiler service includes</h2>
+      <p>An oil service is a longer job than a gas one (typically around two hours), because a proper service means stripping
+         the boiler down rather than simply checking it over. It also includes a look at the tank and supply, which is where a
+         great many oil heating problems actually begin.</p>
+      <ul class="svc-list">
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Full strip-down and clean of the combustion chamber and baffles</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Nozzle replacement and burner head set-up</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Fuel pump pressure test and filter change</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Electrode inspection, cleaning and gapping</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Flue gas analysis and efficiency readings</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Tank, supply line and fire valve inspection</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Written service report and efficiency record</li>
+      </ul>
+
+      <div class="svc-note">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        <span><strong>Please note:</strong> an oil boiler service is not covered by our fixed online service rate, because it takes
+        around two hours and includes a tank check. Please send an enquiry through the
+        <a href="index.html#bookingForm" style="color:#7a5b12;font-weight:700;text-decoration:underline;">query form</a> and we will quote you properly.</span>
+      </div>
+
+      <h2>Oil tanks</h2>
+      <p>The tank is the part of an oil system most likely to cause an expensive problem, and the part most often ignored. A leak
+         is not simply lost fuel: heating oil contamination is treated as pollution, and the clean-up cost commonly runs into
+         thousands of pounds, and it is not always covered by home insurance. Plastic tanks grow brittle with age and
+         sunlight; steel tanks corrode from the inside out. Getting the tank right, and keeping an eye on it, matters.</p>
+      <p>Domestic oil storage is governed by <strong>Building Regulations (Approved Document J)</strong> and OFTEC guidance, which
+         set out how a tank must be supported and where it can be positioned. When we install a new tank, or inspect an existing
+         one, these are the requirements we work to.</p>
+
+      <h3 style="margin-top:26px;font-size:1.05rem;">Tank support</h3>
+      <p>A full oil tank is extremely heavy, so its base is not a detail to be left to chance:</p>
+      <ul class="svc-list">
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>The base must be level, stable and non-combustible: concrete, paving slabs or stonework</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>It must extend at least <strong>300mm</strong> beyond every side of the tank</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>It must be strong enough to carry the full weight of the tank when completely filled</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Plastic tanks must be fully and evenly supported across their whole base, not just the corners</li>
+      </ul>
+
+      <h3 style="margin-top:26px;font-size:1.05rem;">Tank location</h3>
+      <p>To reduce the risk of a fire spreading to or from the tank, minimum separation distances apply. As a general guide, a
+         domestic tank should be positioned:</p>
+      <ul class="svc-list">
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>At least <strong>1.8m</strong> from any non-fire-rated building or structure, such as a wooden shed or eaves</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>At least <strong>1.8m</strong> from openings (doors or windows) in a fire-rated building</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>At least <strong>1.8m</strong> from a flue terminal or the oil boiler flue outlet</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>At least <strong>760mm</strong> from a non-fire-rated boundary, such as a wooden fence</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>At least <strong>600mm</strong> from any non-combustible screening that does not form part of the tank base</li>
+        <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Where these distances cannot be met, a fire-rated barrier can often be used instead, and we will assess this on site</li>
+      </ul>
+
+      <h2>Single skin or bunded?</h2>
+      <p>A bunded tank is a tank within a tank. The outer shell contains the contents of the inner one if it ever fails, so a
+         leak is caught rather than released into the ground. A single skin tank has no such second line of defence.</p>
+      <p>Building regulations and OFTEC guidance call for a bunded tank in most domestic situations: where the tank sits within
+         ten metres of a watercourse or a drain, close to a boundary, above a hard surface where a spill could spread, where the
+         fill point is more than ten metres from the tank, or where it holds more than 2,500 litres. If you have an older single
+         skin tank, we will tell you plainly whether it needs replacing now, or whether it is sound and simply worth keeping an
+         eye on. We will not sell you a tank you do not need.</p>
+
+      <h2>Oil boiler repairs</h2>
+      <p>Most oil breakdowns come down to a handful of causes: a blocked nozzle or filter, a burner that has drifted out of
+         adjustment, contaminated fuel, a tripped fire valve, or air in the supply line. We carry common parts on the van, which is
+         a large part of why most repairs are finished on the first visit.</p>
+      <p>If your boiler has locked out, reset it once. If it locks out again, stop and call us. Repeated resetting pumps unburnt
+         oil into the combustion chamber, and turns a small job into a large one.</p>
+
+      <h2>Replacing your oil boiler</h2>
+      <p>Modern condensing oil boilers are considerably more efficient than the units they replace, and a replacement is often the
+         better economic answer once a boiler is beyond sensible repair. We will survey the property, talk through the options and
+         give you a fixed price before any work begins, including any flue, tank or supply work needed to make the installation
+         compliant.</p>
+      <p>If you are thinking further ahead, moving away from oil altogether to a low-carbon system such as an air source heat pump
+         may attract a government grant under the <strong>Boiler Upgrade Scheme</strong> (up to &pound;7,500 towards eligible
+         installations). This grant does not apply to a like-for-like oil replacement, but if it is something you are considering
+         we are happy to talk it through honestly and help you weigh it up.</p>
+    </div>
+
+    <aside class="svc-aside">
+      <div class="svc-card">
+        <img src="assets/oil-boiler.jpg" alt="Oil boiler with the case removed, showing the burner and heat exchanger">
+        <h3>Book an oil engineer</h3>
+        <p style="font-size:0.9rem;">Servicing, repairs, tank checks and replacements. OFTEC registered, covering BA, BS, GL and SN.</p>
+        <a href="tel:+447833722922" class="btn btn-primary btn-block" style="margin-top:6px;">Call 07833 722922</a>
+        <a href="index.html#bookingForm" class="btn btn-back btn-block" style="margin-top:10px;">Send an Enquiry</a>
+      </div>
+
+      <div class="svc-card">
+        <h3>Signs your oil system needs attention</h3>
+        <ul class="svc-list">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>A smell of oil around the tank or boiler</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Sooty marks or staining around the boiler case</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Repeated lockouts, or a burner that will not fire</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Oil use climbing with no change in the weather</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Damp ground, staining or dead grass near the tank</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <h3>Other services</h3>
+        <ul class="svc-list">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><a href="index.html#services">Gas boiler service &amp; repair</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><a href="index.html#services">LPG appliances</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><a href="index.html#services">Safety checks &amp; certificates</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><a href="terms.html">Terms &amp; conditions</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Oil heating FAQ: answers the questions people actually search for -->
+<section style="background:#fff;border-top:1px solid var(--border);padding:64px 0;">
+  <div class="wrap" style="max-width:820px;">
+    <div class="section-head">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Oil Heating FAQs</h2>
+      <p>The questions we are asked most often about oil boilers and tanks.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>My boiler stopped after the oil ran out. How do I get it going again? <span class="plus"></span></summary>
+        <p>This is the single most common oil call-out, and often the simplest to sort. When a tank runs dry, air gets into the
+           fuel line, so even after a top-up the boiler will not fire. First, find the burner&rsquo;s reset button (a small red or
+           amber button on the burner) and press it <strong>once</strong>. If it fires and stays lit, you are done. If it locks
+           out again, stop. The line needs bleeding to clear the airlock, which is a quick job for an engineer.
+           <strong>Do not keep pressing reset</strong>: each attempt pumps unburnt oil into the combustion chamber and turns a
+           ten-minute fix into a much bigger one.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can any plumber fix an oil boiler? <span class="plus"></span></summary>
+        <p>No, and this catches a lot of people out. A general plumber handles pipes, radiators and taps, but oil-fired
+           appliances legally require an <strong>OFTEC registered</strong> technician who is trained on burners, fuel pumps,
+           photocells and combustion. We are OFTEC registered, so we can service, repair, install and certify oil systems
+           properly, rather than leaving you half-fixed.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How often should an oil boiler be serviced? <span class="plus"></span></summary>
+        <p>Once a year. An annual service keeps the boiler running safely and efficiently, catches small faults before they
+           become breakdowns, and, importantly, keeps any manufacturer warranty valid. Most warranties are void the moment
+           a boiler misses its yearly service, so it is false economy to skip it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long should a tank of oil last? <span class="plus"></span></summary>
+        <p>It depends entirely on your home, the weather and how long the heating is on, so treat any figure as a rough guide
+           rather than a promise. As a very general example, a system burning around four litres an hour, run for a few hours a
+           day, will get through a few hundred litres over a month in the colder part of the year. The best guide is your own
+           tank gauge: check it regularly through winter and order before it drops too low, as running completely dry causes the
+           airlock problem above.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Should I get a second opinion before replacing my boiler? <span class="plus"></span></summary>
+        <p>Yes, always, and we would say that even though it sometimes costs us the job. Oil boilers are robust, and a great many
+           faults quoted as &ldquo;needs replacing&rdquo; turn out to be a worn nozzle, a dirty photocell, a tired pump or a blocked
+           filter. These are parts, not a whole new boiler. We will tell you honestly whether yours is worth repairing or genuinely at the
+           end of its life, and we will never sell you a replacement you do not need.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does oil heating use much electricity? <span class="plus"></span></summary>
+        <p>Very little. The oil provides the heat; electricity only runs the burner, the pump and the controls, which draw a small
+           amount of power. Your heating cost is overwhelmingly the oil itself, not the electricity to run the boiler.</p>
+      </details>
+    </div>
+    <div style="text-align:center;margin-top:34px;">
+      <a href="tel:+447833722922" class="btn btn-primary">Call an Oil Engineer on 07833 722922</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="flogo" src="assets/proflame-logo.jpg" alt="Pro Flame Gas Services South West">
+        <p style="color:#93a9cb;">Fast response emergency plumbers and gas engineers covering the South West. Service, repair, safety checks and installs on all oil, LPG and domestic appliances.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Emergency Callouts</a></li>
+          <li><a href="index.html#services">Boiler Installation</a></li>
+          <li><a href="index.html#services">Boiler Repair</a></li>
+          <li><a href="index.html#services">Cooker &amp; Hob Fitting</a></li>
+          <li><a href="index.html#services">Safety Checks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#our-work">Our Work</a></li>
+          <li><a href="index.html#before-after">Before &amp; After</a></li>
+          <li><a href="index.html#reviews">Testimonials</a></li>
+          <li><a href="index.html#coverage">Areas Covered</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+447833722922">07833 722922</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:info@proflamegas.co.uk">info@proflamegas.co.uk</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:admin@proflamegas.co.uk">admin@proflamegas.co.uk</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Filton, by the M5/M4 Interchange</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>VAT Reg No: 86445775</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pro Flame Gas Services. All rights reserved.</span>
+      <span>Gas Safe Registered · OFTEC Registered · Waste Carriers Licence</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-call">
+  <a href="tel:+447833722922"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now on 07833 722922</a>
+</div>
+
+<script>
+  // Mobile menu
+  (function () {
+    var btn = document.querySelector('.nav-toggle');
+    var panel = document.getElementById('mobile-nav');
+    if (!btn || !panel) return;
+    function close() { panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open menu'); }
+    btn.addEventListener('click', function () {
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    panel.addEventListener('click', function (e) { if (e.target.tagName === 'A') close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 1220) close(); });
+  })();
+</script>
+</body>
+</html>

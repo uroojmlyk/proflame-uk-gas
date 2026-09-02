@@ -1,0 +1,71 @@
+# Protect the Square credentials from being fetched directly over the web.
+<Files "square-config.php">
+    Require all denied
+</Files>
+
+# Fallback for older Apache (2.2) if the above is not supported
+<Files "square-config.php">
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</Files>
+
+# Never serve these as plain text if the handler is ever misconfigured.
+# (This site currently serves .pl files as source, which is exactly the
+#  failure mode this guards against.)
+# Booking logs and the rate-limit store must never be readable over the web.
+# urlLog.txt contains live payment links; the logs contain customer details.
+<FilesMatch "^(urlLog\.txt|MailLog\.txt|\.ratelimit\.json)$">
+    Require all denied
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+<FilesMatch "\.(env|ini|log|cjs|pl)$">
+    Require all denied
+</FilesMatch>
+
+# ---------------------------------------------------------------------------
+# Security headers
+#
+# These defend against the two realistic ways the displayed phone number
+# could be tampered with, and against the site being cloned into a phishing
+# frame:
+#   - Content-Security-Policy: only lets the browser run scripts / load
+#     resources from this site and the known, trusted services (Google Fonts,
+#     Cal.com, Square). An injected <script src="https://evil.com/..."> that
+#     tried to rewrite the number is simply refused by the browser.
+#   - X-Frame-Options / frame-ancestors: stops anyone loading our booking page
+#     inside their own page to build a convincing fake.
+#   - HSTS: forces HTTPS so the connection can't be downgraded and altered.
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Only serve over HTTPS from now on (max-age is 1 year).
+    # Remove "preload" unless you intend to submit the domain to the HSTS preload list.
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # No other site may frame our pages (anti-clickjacking / anti-phishing-clone).
+    Header always set X-Frame-Options "DENY"
+
+    # Stop the browser guessing a file's type (blocks some injection tricks).
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Don't leak the full URL to third parties.
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Lock down powerful browser features we never use.
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+    # The main event: control exactly where scripts, styles, frames and form
+    # posts are allowed to come from / go to.
+    #   NOTE: 'unsafe-inline' for scripts is required because the pages contain
+    #   inline <script> blocks and PHP-generated values. It is an acceptable
+    #   trade-off here because the site renders no user-submitted content back
+    #   into the page, so there is no way to inject an inline script in the
+    #   first place; the real risk (a rogue EXTERNAL script) is still blocked.
+    #   To remove it later, move the inline JS into files and use hashes.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://app.cal.com https://cal.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://app.cal.com https://cal.com; frame-src https://app.cal.com https://cal.com https://squareup.com https://square.link https://*.square.link https://connect.squareup.com; form-action 'self' https://connect.squareup.com https://squareup.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+</IfModule>
