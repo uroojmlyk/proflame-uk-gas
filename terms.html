@@ -9,64 +9,745 @@
 <link rel="icon" href="assets/proflame-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=20260819b">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  /* Collapsible mobile nav */
-.mobile-nav .mn-group{position:relative;border-bottom:1px solid var(--border);}
-.mobile-nav .mn-parent{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  background:none;border:none;padding:13px 16px;font-weight:600;color:var(--navy-deep);
-  font-size:0.98rem;cursor:pointer;font-family:'Inter',sans-serif;text-align:left;
+/* ===== RESET & VARIABLES (from home page) ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.mobile-nav .mn-parent:hover{background:var(--blue-soft);}
-.mn-caret{width:14px;height:14px;stroke:var(--navy);stroke-width:2.4;fill:none;
-  stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;}
-.mn-group.open .mn-caret{transform:rotate(180deg);}
-.mn-submenu{display:none;background:#f8fafd;padding:6px 8px;}
-.mn-group.open .mn-submenu{display:block;}
-.mn-submenu a{
-  display:block;padding:10px 16px;margin-left:20px;border-radius:8px;
-  font-size:0.9rem;color:var(--muted);
+:root {
+    --navy: #14387f;
+    --navy-deep: #0d264f;
+    --red: #e11b22;
+    --red-dark: #b8161c;
+    --flame-light: #f5a623;
+    --blue-soft: #eef3fc;
+    --bg: #f6f9fe;
+    --muted: #4a5b7a;
+    --border: #dce3ed;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 8px 32px rgba(20, 56, 127, 0.10);
+    --shadow-hover: 0 12px 48px rgba(20, 56, 127, 0.18);
+    --transition: 0.25s ease;
+    --success: #1e9e6b;
 }
-.mn-submenu a:hover{background:var(--blue-soft);color:var(--red);}
-.mn-submenu a:last-child{margin-bottom:4px;}
-  .page-head{background:linear-gradient(160deg,var(--navy) 0%, var(--navy-deep) 75%);color:#fff;padding:52px 0 46px;}
-  .page-head h1{color:#fff;margin-bottom:10px;}
-  .page-head p{color:#c3d3e5;margin:0;max-width:620px;}
-  .page-back{display:inline-flex;align-items:center;gap:7px;color:#c3d3e5;font-size:0.86rem;font-weight:600;margin-bottom:14px;}
-  .page-back:hover{color:#fff;}
-  .tc-body{background:var(--bg);padding:52px 0 76px;}
-  .tc-card{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
-           box-shadow:var(--shadow);padding:40px;}
-  .tc-clause{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
-  .tc-clause:last-child{border-bottom:none;}
-  .tc-num{flex:0 0 46px;font-family:'Sora',sans-serif;font-weight:800;color:var(--red);font-size:0.9rem;padding-top:2px;}
-  .tc-clause p{margin:0;font-size:0.93rem;line-height:1.65;}
-  .tc-h2{margin:34px 0 16px;font-size:1.2rem;padding-top:24px;border-top:2px solid var(--border);}
-  .tc-p{font-size:0.93rem;line-height:1.65;}
-  .tc-intro{background:var(--blue-soft);border-radius:12px;padding:18px 20px;margin-bottom:26px;font-size:0.9rem;color:var(--navy-deep);}
-  @media(max-width:600px){.tc-card{padding:24px 20px;} .tc-num{flex-basis:36px;}}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #1a2636;
+    line-height: 1.6;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: #fff;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+.btn-primary {
+    background: var(--red);
+    color: #fff;
+}
+.btn-primary:hover {
+    background: var(--red-dark);
+}
+.btn-ghost {
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+}
+.btn-ghost:hover {
+    background: var(--navy);
+    color: #fff;
+}
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+.btn-navy {
+    background: var(--navy-deep);
+    color: #fff;
+}
+.btn-navy:hover {
+    background: var(--navy);
+}
+.btn-back {
+    background: #fff;
+    color: var(--navy);
+    border: 1.5px solid var(--border);
+}
+.btn-back:hover {
+    border-color: var(--navy);
+    background: var(--blue-soft);
+}
+.eyebrow {
+    display: inline-block;
+    background: rgba(225, 27, 34, 0.10);
+    color: var(--red);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 12px;
+}
+.section-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+}
+.section-head h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--navy-deep);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+.section-head p {
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+    background: var(--navy-deep);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+    padding: 8px 0;
+    border-bottom: 2px solid var(--red);
+    position: relative;
+    z-index: 60;
+}
+.topbar .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+}
+.topbar .badges {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.topbar .badges span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.topbar .badges .icon {
+    width: 14px;
+    height: 14px;
+    stroke: var(--red);
+    stroke-width: 3;
+}
+.topbar a {
+    color: #fff;
+    font-weight: 600;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+}
+.topbar a:hover {
+    border-bottom-color: #fff;
+}
+
+/* ===== HEADER / NAVBAR — STICKY (same as home) ===== */
+header.site {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s, background 0.3s;
+}
+header.site.scrolled {
+    box-shadow: 0 4px 24px rgba(20, 56, 127, 0.08);
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(6px);
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    min-height: 78px;
+}
+
+/* — Logo (bigger) — */
+.logo img {
+    display: block;
+    height: 56px;
+    width: auto;
+    transition: height 0.3s;
+}
+header.site.scrolled .logo img {
+    height: 44px;
+}
+
+/* — Main nav (desktop) — */
+nav.main {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+nav.main>a,
+nav.main .nav-item>a {
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--navy-deep);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+}
+nav.main>a:hover,
+nav.main .nav-item>a:hover {
+    background: var(--blue-soft);
+    color: var(--red);
+}
+.nav-caret {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+}
+
+/* — Dropdown — */
+.nav-item {
+    position: relative;
+}
+.nav-drop {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 220px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: var(--transition);
+    border: 1px solid var(--border);
+    pointer-events: none;
+    z-index: 100;
+}
+.nav-item:hover .nav-drop {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.nav-drop a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    color: var(--navy-deep);
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+.nav-drop a:hover {
+    background: var(--blue-soft);
+    color: var(--red);
+    border-left-color: var(--red);
+}
+.nav-drop .icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+}
+
+/* — Header CTA — only phone number (no Book Now) — */
+.header-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+.header-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy-deep);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+.header-phone:hover {
+    background: var(--blue-soft);
+}
+.header-phone .txt small {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.2;
+}
+.header-phone .txt strong {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--red);
+}
+.header-phone .icon {
+    stroke: var(--red);
+    width: 22px;
+    height: 22px;
+}
+
+/* — WhatsApp floating button — */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse-whatsapp 2.5s ease-in-out infinite;
+}
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 48px rgba(37, 211, 102, 0.55);
+}
+.whatsapp-float .icon {
+    width: 32px;
+    height: 32px;
+    stroke: none;
+    fill: #fff;
+}
+@keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+@media (max-width: 600px) {
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        bottom: 16px;
+        right: 16px;
+    }
+    .whatsapp-float .icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* — Hamburger (mobile) — */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 6px 4px;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+.nav-toggle:hover {
+    background: var(--blue-soft);
+}
+.nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: var(--navy-deep);
+    border-radius: 4px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== MOBILE NAV (collapsible groups) ===== */
+.mobile-nav {
+    display: none;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: 8px 0 16px;
+    flex-direction: column;
+}
+.mobile-nav.open {
+    display: flex;
+}
+.mobile-nav .mn-group {
+    border-bottom: 1px solid var(--border);
+}
+.mobile-nav .mn-parent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 13px 16px;
+    font-weight: 700;
+    color: var(--navy-deep);
+    font-size: 0.98rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+.mobile-nav .mn-parent:hover {
+    background: var(--blue-soft);
+}
+.mn-caret {
+    width: 18px;
+    height: 18px;
+    stroke: var(--navy);
+    stroke-width: 2.4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s;
+}
+.mn-group.open .mn-caret {
+    transform: rotate(180deg);
+}
+.mn-submenu {
+    display: none;
+    background: var(--blue-soft);
+    padding: 6px 8px 10px;
+    border-radius: var(--radius-sm);
+    margin: 0 8px 8px;
+}
+.mn-group.open .mn-submenu {
+    display: block;
+}
+.mn-submenu a {
+    display: block;
+    padding: 10px 16px;
+    margin-left: 20px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+    border-left: 2px solid transparent;
+}
+.mn-submenu a:hover {
+    background: #fff;
+    color: var(--red);
+    border-left-color: var(--red);
+}
+.mobile-nav a {
+    padding: 12px 16px;
+    font-weight: 600;
+    color: var(--navy-deep);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    font-size: 0.95rem;
+    border-left: 3px solid transparent;
+}
+.mobile-nav a:hover {
+    background: var(--blue-soft);
+    color: var(--red);
+    border-left-color: var(--red);
+}
+.mn-call {
+    background: var(--red);
+    color: #fff !important;
+    text-align: center;
+    font-weight: 800;
+    margin-top: 8px;
+    border-radius: var(--radius) !important;
+    padding: 14px !important;
+    border-left: none !important;
+}
+.mn-call:hover {
+    background: var(--red-dark) !important;
+    color: #fff !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1220px) {
+    nav.main { display: none; }
+    .nav-toggle { display: flex; }
+    .header-phone .txt { display: none; }
+    .logo img { height: 40px; }
+    header.site.scrolled .logo img { height: 36px; }
+}
+@media (max-width: 640px) {
+    .topbar .badges span:nth-child(2),
+    .topbar .badges span:nth-child(3) { display: none; }
+    .topbar .wrap { justify-content: center; font-size: 0.75rem; }
+    .logo img { height: 34px; }
+    header.site.scrolled .logo img { height: 30px; }
+    .section-head h2 { font-size: 1.6rem; }
+    .header-inner { min-height: 62px; padding: 6px 0; }
+}
+@media (max-width: 400px) {
+    .topbar .badges span:first-child { font-size: 0.7rem; }
+    .logo img { height: 28px; }
+}
+
+/* ============================================================
+   TERMS PAGE SPECIFIC STYLES
+   ============================================================ */
+
+.page-head {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 75%);
+    color: #fff;
+    padding: 52px 0 46px;
+}
+.page-head h1 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+}
+.page-head p {
+    color: #c3d3e5;
+    margin: 0;
+    max-width: 620px;
+    font-size: 1.05rem;
+}
+.page-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #c3d3e5;
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+.page-back:hover {
+    color: #fff;
+}
+
+.tc-body {
+    background: var(--bg);
+    padding: 52px 0 76px;
+}
+.tc-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px;
+}
+.tc-clause {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+.tc-clause:last-child {
+    border-bottom: none;
+}
+.tc-num {
+    flex: 0 0 46px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    color: var(--red);
+    font-size: 0.9rem;
+    padding-top: 2px;
+}
+.tc-clause p {
+    margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+.tc-h2 {
+    margin: 34px 0 16px;
+    font-size: 1.2rem;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+    font-family: 'Sora', sans-serif;
+    color: var(--navy-deep);
+}
+.tc-p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+.tc-intro {
+    background: var(--blue-soft);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 26px;
+    font-size: 0.9rem;
+    color: var(--navy-deep);
+}
+.tc-intro a {
+    color: var(--red);
+    font-weight: 700;
+}
+.tc-intro a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .tc-card {
+        padding: 24px 20px;
+    }
+    .tc-num {
+        flex-basis: 36px;
+    }
+}
+
+/* ===== FOOTER (same as home) ===== */
+footer.site {
+    background: #0d1a30;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 48px 0 20px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer-grid .flogo {
+    height: 44px;
+    width: auto;
+    margin-bottom: 12px;
+}
+.footer-grid h4 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 14px;
+}
+.footer-grid ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.footer-grid ul li a {
+    font-size: 0.88rem;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.footer-grid ul li a:hover {
+    color: #fff;
+}
+.footer-grid ul li .icon {
+    width: 16px;
+    height: 16px;
+    stroke: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+.footer-bottom {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+@media (max-width: 820px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="wrap">
     <div class="badges">
       <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Gas Safe Registered</span>
-      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 98% First Time Fix Rate</span>
-      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 1 Year Warranty on All Works</span>
+      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 98% First Time Fix</span>
+      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 1 Year Warranty</span>
     </div>
     <div>Covering BA · BS · GL · SN · <a href="tel:+447833722922">07833 722922</a></div>
   </div>
 </div>
 
-<!-- Header -->
-<header class="site">
+<!-- HEADER (sticky) -->
+<header class="site" id="siteHeader">
   <div class="wrap">
     <div class="header-inner">
-      <a class="logo" href="index.html"><img src="assets/proflame-logo-long.jpg" alt="Pro Flame Gas Services South West"></a>
+      <!-- LOGO — bigger -->
+      <a class="logo" href="index.html">
+        <img src="assets/proflame-logo-new.png" alt="Pro Flame Gas Services South West" style="height:56px;width:auto;">
+      </a>
+
+      <!-- DESKTOP NAV -->
       <nav class="main">
         <div class="nav-item">
           <a href="index.html#services">Services <svg class="nav-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
@@ -86,35 +767,51 @@
         <a href="index.html#coverage">Areas</a>
         <a href="index.html#faq">FAQ</a>
       </nav>
+
+      <!-- HEADER CTA — only phone number (no Book Now) -->
       <div class="header-cta">
-        <div class="header-phone">
+        <a href="tel:+447833722922" class="header-phone">
           <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <div class="txt"><small>Call · Text · WhatsApp</small><strong>07833 722922</strong></div>
-        </div>
-        <a href="tel:+447833722922" class="btn-pill"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Book Now</a>
+        </a>
+
+        <!-- HAMBURGER -->
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
+
+    <!-- MOBILE NAV (collapsible groups) -->
     <nav class="mobile-nav" id="mobile-nav">
-      <a href="index.html#services">Services</a>
-      <a class="mn-sub" href="oil-boilers-tanks.html">Oil Boilers &amp; Tanks</a>
-      <a class="mn-sub" href="index.html#services">LPG Appliances</a>
-      <a class="mn-sub" href="index.html#services">Safety Checks</a>
+      <div class="mn-group">
+        <button class="mn-parent" type="button" aria-expanded="false">Services <svg class="mn-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mn-submenu">
+          <a href="oil-boilers-tanks.html">Oil Boilers &amp; Tanks</a>
+          <a href="index.html#services">LPG Appliances</a>
+          <a href="index.html#services">Safety Checks</a>
+          <a href="index.html#services">Boiler Swaps</a>
+        </div>
+      </div>
       <a href="index.html#pricing">Callout Rates</a>
       <a href="booking.php?t=S">Book Online</a>
       <a href="index.html#our-work">Our Work</a>
-      <a href="index.html#about">About Us</a>
-      <a href="index.html#reviews">Reviews</a>
-      <a href="index.html#coverage">Areas Covered</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="terms.html">Terms &amp; Conditions</a>
+      <div class="mn-group">
+        <button class="mn-parent" type="button" aria-expanded="false">About Us <svg class="mn-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mn-submenu">
+          <a href="index.html#about">About Us</a>
+          <a href="index.html#reviews">Reviews</a>
+          <a href="index.html#coverage">Areas Covered</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
       <a class="mn-call" href="tel:+447833722922">Call 07833 722922</a>
     </nav>
   </div>
 </header>
 
+<!-- PAGE HEADER -->
 <section class="page-head">
   <div class="wrap">
     <h1>Terms &amp; Conditions</h1>
@@ -122,37 +819,38 @@
   </div>
 </section>
 
+<!-- TERMS CONTENT -->
 <section class="tc-body">
   <div class="wrap">
     <div class="tc-card">
       <p class="tc-intro">
-        In all clauses, &ldquo;the company&rdquo; refers to Pro Flame Gas Services. If you are uncertain about your rights
+        In all clauses, "the company" refers to Pro Flame Gas Services. If you are uncertain about your rights
         under these terms, or would like anything explained, please call us on
-        <a href="tel:+447833722922" style="color:var(--red);font-weight:700;">07833 722922</a> or email
-        <a href="mailto:info@proflamegas.co.uk" style="color:var(--red);font-weight:700;">info@proflamegas.co.uk</a>.
+        <a href="tel:+447833722922">07833 722922</a> or email
+        <a href="mailto:info@proflamegas.co.uk">info@proflamegas.co.uk</a>.
       </p>
         <div class="tc-clause"><span class="tc-num">1</span><p>Please read the following clauses carefully as they tell you everything you need to know about the agreement you will enter into in respect of Proflame Gas. In all clauses, the company refers to Proflame Gas. If you are uncertain as to your rights under them or you want any explanation about them, please write or telephone us at the address or telephone number given.</p></div>
         <div class="tc-clause"><span class="tc-num">2</span><p>The company has quoted the cost of installing central heating and/or plumbing equipment that meets the requirements of your home. Once you have accepted this quotation in accordance with below, the company undertakes to carry out all the works necessary to complete the work described in your specification and this quotation subject to the conditions contained in this agreement.</p></div>
         <div class="tc-clause"><span class="tc-num">3</span><p>If you require a particular date for the works to be carried out, the company will do all that it reasonably can to meet the dates given for the installation. The company also understands that there might be instances when a date for installation cannot be met by you, and as a result no party shall be liable for costs or able to cancel this agreement. In case of unforeseen circumstances, beyond reasonable control of the company or you, the company will contact you and agree an alternative date.</p></div>
         <div class="tc-clause"><span class="tc-num">4</span><p>The company will carry out the whole of the work specified in this quotation at the price quoted during normal hours, which are between 8am and 5.30pm Monday to Friday. Any variations or additions requested by you will be subject to an additional charge and if the company is delayed or prevented from installing by the agreed date due to delay or default on your part, the company may on written notice to you add to the charges at a reasonable sum in respect of any additional costs incurred.</p></div>
         <div class="tc-clause"><span class="tc-num">5</span><p>You shall at your own expense obtain all necessary consents for the installation of the works, including (without installation) building regulations and planning consents, consents from neighbours and mortgages.</p></div>
-        <div class="tc-clause"><span class="tc-num">6</span><p>If you are a tenant, you may need your landlord&rsquo;s permission for an installation to be carried out. The company will assume such permission has been granted and shall have no liability for any loss or damage arising from failure to obtain such permission.</p></div>
+        <div class="tc-clause"><span class="tc-num">6</span><p>If you are a tenant, you may need your landlord's permission for an installation to be carried out. The company will assume such permission has been granted and shall have no liability for any loss or damage arising from failure to obtain such permission.</p></div>
         <div class="tc-clause"><span class="tc-num">7</span><p>You will provide reasonable access to enable installations to be completed. You will also be required to provide the necessary service utilities for installation at no charge.</p></div>
-        <div class="tc-clause"><span class="tc-num">8</span><p>Your order as accepted subject to the condition that there must be an adequate gas supply to the dwelling prior to the commencement of the work. Without prejudice to the company&rsquo;s rights where such supply is not laid to enable work to commence, the company may cancel the contract and shall not have any liability for any costs, loss or damage arising from such cancellation. In certain circumstances the size of the existing gas rate cannot always be determined. If a new gas line is required, this will be charged at our standard hourly rates as set out and will be in addition to the quoted price.</p></div>
+        <div class="tc-clause"><span class="tc-num">8</span><p>Your order as accepted subject to the condition that there must be an adequate gas supply to the dwelling prior to the commencement of the work. Without prejudice to the company's rights where such supply is not laid to enable work to commence, the company may cancel the contract and shall not have any liability for any costs, loss or damage arising from such cancellation. In certain circumstances the size of the existing gas rate cannot always be determined. If a new gas line is required, this will be charged at our standard hourly rates as set out and will be in addition to the quoted price.</p></div>
         <div class="tc-clause"><span class="tc-num">9</span><p>The prices specified in this agreement do not include the price of removing any dangerous waste materials such as asbestos found when carrying out the installation. If during the execution of the works, asbestos is encountered, the company reserves the right to withdraw its installation staff immediately until the site is made safe. The cost of removing asbestos is not included within the price. However, the company upon request of the customer will provide a cost for removing asbestos and will add this fee to the total quote.</p></div>
-        <div class="tc-clause"><span class="tc-num">10</span><p>Where the company needs to connect new equipment to your existing plumbing or heating system, it will not accept liability for the cost of repairing or replacing parts of your existing system, which subsequently develops faults. In certain situations the company may charge for visits made to your home by the company&rsquo;s engineer if your system is faulty or has developed a fault after the installation has been conducted. The company will not accept liability where you central heating system does not function properly because your water supply becomes inadequate or the water pressure becomes invariable.</p></div>
+        <div class="tc-clause"><span class="tc-num">10</span><p>Where the company needs to connect new equipment to your existing plumbing or heating system, it will not accept liability for the cost of repairing or replacing parts of your existing system, which subsequently develops faults. In certain situations the company may charge for visits made to your home by the company's engineer if your system is faulty or has developed a fault after the installation has been conducted. The company will not accept liability where you central heating system does not function properly because your water supply becomes inadequate or the water pressure becomes invariable.</p></div>
         <div class="tc-clause"><span class="tc-num">11</span><p>Proflame Gas accepts no responsibility for any existing installations that are present. This relates in particular but not only to any pipework, radiators and radiator valves, heating valves, pumps, shower pumps, electrical controls and/or bathroom / WC services that might be affected as a result of an a conversion from a tank fed system to a sealed system or from power flushing of pipework and radiators. This change to a higher pressure rated system and power flushing can cause leaks in components that Proflame Gas will not be liable for. Any cost of repairs for which Proflame Gas are not liable for will be charged in accordance with our standard company charges. If your system is excessively full of magnetite and sludge, a further power flush might be required at some point later (eg. 3 years). Further power flushes will be chargeable at our standard power flush rates as shown our website. Furthermore, if the buyer has requested that an existing appliance be re-installed or moved (eg. boiler), Proflame Gas accepts no liability for any internal leaks or malfunctions of this boiler, as a direct result of this installation.</p></div>
         <div class="tc-clause"><span class="tc-num">12</span><p>The warranty for a boiler and or cylinder will be covered by the manufacturers as agreed in the quotation. The warranty only applies to the boiler. It does not apply to any existing parts of the system. All other works carried out by Proflame Gas (parts and labour) are guaranteed for 2 years. However, any existing components or pipework not changed are not included within this guarantee. Furthermore, all boilers need to be serviced annually to remain under warranty.</p></div>
         <p class="tc-p">If the warranty becomes void due to the appliance not being serviced, then Proflame Gas accepts no responsibility for this. We will contact our clients to remind them to have it serviced, but the responsibility of having it done lies with the customer.</p>
         <div class="tc-clause"><span class="tc-num">13</span><p>The company accepts no liability for the removal of any carpets, linoleum and special types of flooring, eg. tongue and grooved, parquet, hard wood or tiled floors in order to carry out the installation, accept in circumstances where the company has been negligent.</p></div>
-        <div class="tc-clause"><span class="tc-num">14</span><p>The company will take all reasonable care to carry out the installation. However, you accept that the installation including removing or destroying existing fixtures or fittings may cause damage to your decorations and fittings in your home. This provision does not exclude the company&rsquo;s responsibility for damage, which is beyond which is reasonably commensurate with the installation. It is anticipated that certain areas in your home may need redecoration following completion of the central heating installation. This will be your responsibility and is not included in the price.</p></div>
+        <div class="tc-clause"><span class="tc-num">14</span><p>The company will take all reasonable care to carry out the installation. However, you accept that the installation including removing or destroying existing fixtures or fittings may cause damage to your decorations and fittings in your home. This provision does not exclude the company's responsibility for damage, which is beyond which is reasonably commensurate with the installation. It is anticipated that certain areas in your home may need redecoration following completion of the central heating installation. This will be your responsibility and is not included in the price.</p></div>
         <div class="tc-clause"><span class="tc-num">15</span><p>All Proflame Gas Employees and agents are insured against loss or injury through their negligence.</p></div>
         <div class="tc-clause"><span class="tc-num">16</span><p>The company shall not have any liability for any failure to perform its obligations under any quotation if it is prevented from doing so by any cause reasonably beyond its control; including without limitation; adverse weather conditions, fire, accident or war, a failure or delay attributable to any electricity, water or gas network, the act or omission of any party for whom the company is not responsible.</p></div>
         <div class="tc-clause"><span class="tc-num">17</span><p>The company will not be liable under this agreement for any loss or damage caused by the company or its employees or agents in circumstances where;</p></div>
-        <div class="tc-clause"><span class="tc-num">17.1</span><p>There is no breach or illegal duty of care owed to you by the company or by any of the company&rsquo;s employees or agents.</p></div>
+        <div class="tc-clause"><span class="tc-num">17.1</span><p>There is no breach or illegal duty of care owed to you by the company or by any of the company's employees or agents.</p></div>
         <div class="tc-clause"><span class="tc-num">17.2</span><p>Such loss of damage is not a reasonably foreseeable result of any such breach.</p></div>
         <div class="tc-clause"><span class="tc-num">17.3</span><p>Any increase in loss or damage resulting from breach by you of any term of this contract.</p></div>
-        <div class="tc-clause"><span class="tc-num">18</span><p>The company does not exclude any liability for loss of or damage to property directly resulting from the company&rsquo;s breach of the agreement, but the company&rsquo;s liability for such loss or damage shall be limited to those losses which are of a foreseeable consequence of the breach in respect of any one incident or series of incidents whether related or unrelated in any period of twenty-four months.</p></div>
+        <div class="tc-clause"><span class="tc-num">18</span><p>The company does not exclude any liability for loss of or damage to property directly resulting from the company's breach of the agreement, but the company's liability for such loss or damage shall be limited to those losses which are of a foreseeable consequence of the breach in respect of any one incident or series of incidents whether related or unrelated in any period of twenty-four months.</p></div>
         <div class="tc-clause"><span class="tc-num">19</span><p>To complete your installation the company will use its authorised employees or agents. All contractors are approved by the company are qualified and Gas Safe registered and chosen carefully to carry out high standards or workmanship.</p></div>
         <div class="tc-clause"><span class="tc-num">20</span><p>Standard charges. All charges will be clearly laid on within our quotation. In situations when a quotation has not and/or cannot be provided (e.g. Immediate or Emergency works), then our normal charges apply and are as follows:</p></div>
         <div class="tc-clause"><span class="tc-num">20.1</span><p>Hourly rate £75 per hour (or any part thereof) plus any other additional travel and parking charges (see below). Emergency call out, evening, weekend and bank holiday rates may vary.</p></div>
@@ -160,7 +858,7 @@
         <div class="tc-clause"><span class="tc-num">20.3</span><p>Troubleshooting. Where the customer has requested that we troubleshoot a problem only but not to carry out the work, then our standard hourly rate plus any additional travel charges (as below) will apply.</p></div>
         <div class="tc-clause"><span class="tc-num">20.4</span><p>Boiler and heating Servicing. The cost of a standard service is £95 plus VAT, plus any additional travel and parking charges (as below) . Please note, this a service and not a repair. Any additional time spent on a repair or materials bought will be added on accordingly.</p></div>
         <div class="tc-clause"><span class="tc-num">20.5</span><p>Landlord Certificates. The cost of as landlord certificate is £75 plus VAT (plus any other additional travel and parking charges).</p></div>
-        <div class="tc-clause"><span class="tc-num">20.6</span><p>For most boilers, a full strip down service is required in order to comply with manufacturers&rsquo; instructions. The cost of this £150 plus VAT.</p></div>
+        <div class="tc-clause"><span class="tc-num">20.6</span><p>For most boilers, a full strip down service is required in order to comply with manufacturers' instructions. The cost of this £150 plus VAT.</p></div>
         <div class="tc-clause"><span class="tc-num">20.7</span><p>Additional Travel and Parking charges. These will be added on to the invoice to cover parking and congestion and Ulez charges, as applicable.</p></div>
         <div class="tc-clause"><span class="tc-num">20.8</span><p>Parking permits. It is the responsibility of the home owner, tenant or agent to provide a parking permit or to register our van with the local authority for parking, wherever possible. This particularly applies where there are no pay and display parking bays within a reasonable distance (typically 100m) of the property. This is because it is very inconvenient and time consuming to have to walk to and from the van for parts that might be needed and to keep checking on it for wardens. Therefore, we kindly request that our customers organise parking prior to us arriving, Our vehcile registration details are available upon request.</p></div>
         <div class="tc-clause"><span class="tc-num">20.9</span><p>Call backs, Should you feel there is an issue with our work, then we will be very happy to return and rectify it at no cost. However, should we return to site for a call back, but the problem be unrelated to the work carried out by Proflame Gas, then our standard charges shall apply.</p></div>
@@ -177,7 +875,7 @@
         <div class="tc-clause"><span class="tc-num">26</span><p>Once the company has corrected the minor defect as outlined in clause 20, the withheld amount, 5% or £250 must be paid in full.</p></div>
         <div class="tc-clause"><span class="tc-num">27</span><p>Where payments are not made up on the due date as per above clauses, the company will charge daily interest on late payments at a rate of 8% above the base lending rate of Lloyds TSB Bank plc. If you make payment and it is subsequently stopped, declined or returned by the bank for any reason, the company will charge you administration costs (letters and telephone calls made to you and any other charges incurred).</p></div>
         <div class="tc-clause"><span class="tc-num">28</span><p>You will be sent an invoice for payment within seven days of installation completion. Failure to make payment within specific time periods as outlined within the quotation and/or the Terms and Conditions,will instigate legal proceedings to commence. These will carried by a registered Legal firm and all proceedings will be governed in accordance with English Law.</p></div>
-        <div class="tc-clause"><span class="tc-num">29</span><p>The company shall provide a free guarantee for the period of one years. This applies to workmanship only and not to parts (which typically come with a one year manufacturer&rsquo;s warranty except from boilers, the warranty length for which will be made clear in the quotation stage). However, the above warranty is subject to the following conditions:</p></div>
+        <div class="tc-clause"><span class="tc-num">29</span><p>The company shall provide a free guarantee for the period of one years. This applies to workmanship only and not to parts (which typically come with a one year manufacturer's warranty except from boilers, the warranty length for which will be made clear in the quotation stage). However, the above warranty is subject to the following conditions:</p></div>
         <div class="tc-clause"><span class="tc-num">29.1</span><p>The fault is not due to your existing radiators and/or pipework, valves, pumps or boiler.</p></div>
         <div class="tc-clause"><span class="tc-num">29.2</span><p>The work carried out has not been properly kept, used, serviced and maintained in strict accordance with the manufacturers or the companies instructions and has not been modified accept with the companies consent.</p></div>
         <div class="tc-clause"><span class="tc-num">29.3</span><p>The fault is not due to accidental or wilful damage, fair wear and tear, interference with or maintenance work by a third party.</p></div>
@@ -188,27 +886,27 @@
         <div class="tc-clause"><span class="tc-num">30</span><p>After delivery of any goods from the company, you will be responsible for their safe keeping and you should make sure that you are adequately insured against loss or damage which may occur to those goods.</p></div>
         <div class="tc-clause"><span class="tc-num">31</span><p>This agreement is personal to you and not transferable to without written authority from Proflame Gas Limited.</p></div>
         <h2 class="tc-h2">Notice of Right to Cancel</h2>
-        <p class="tc-p">Following the Company&rsquo;s acceptaer, in accordance with terms above and in conjunction with the &ldquo;Cancellation of Contracts made in a Consumers Home or Place of Work Regulations 2008 you are entitled to a 14 day cooling off period commencing from the date of the contract. You have a right to cancel the contract within this period (not if works have commenced however) and this right can be exercised by delivering, or sending (including by electronic mail) cancellation notice to Proflame Gas Limited, 48 Hampstead House, 176 Finchley Road, Hampstead, London, NW3 6BT or by email to info@proflanegas.co.uk at any time within the 14 days starting with the day of receipt to notice in writing of the right to cancel the contract. We will permit you to cancel the contract by sending the written notice no later than 14 days after the date on which acceptance of the works took place. If you request cancellation at a later date, then unless we are in breach of contract we have the right to refuse or retain all or part of you deposit.</p>
+        <p class="tc-p">Following the Company's acceptaer, in accordance with terms above and in conjunction with the "Cancellation of Contracts made in a Consumers Home or Place of Work Regulations 2008 you are entitled to a 14 day cooling off period commencing from the date of the contract. You have a right to cancel the contract within this period (not if works have commenced however) and this right can be exercised by delivering, or sending (including by electronic mail) cancellation notice to Proflame Gas Limited, 48 Hampstead House, 176 Finchley Road, Hampstead, London, NW3 6BT or by email to info@proflanegas.co.uk at any time within the 14 days starting with the day of receipt to notice in writing of the right to cancel the contract. We will permit you to cancel the contract by sending the written notice no later than 14 days after the date on which acceptance of the works took place. If you request cancellation at a later date, then unless we are in breach of contract we have the right to refuse or retain all or part of you deposit.</p>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="site">
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img class="flogo" src="assets/proflame-logo.jpg" alt="Pro Flame Gas Services South West">
+        <img class="flogo" src="assets/proflame-logo-new.png" alt="Pro Flame Gas Services South West">
         <p style="color:#93a9cb;">Fast response emergency plumbers and gas engineers covering the South West. Service, repair, safety checks and installs on all oil, LPG and domestic appliances.</p>
       </div>
       <div>
         <h4>Services</h4>
         <ul>
-          <li><a href="index.html#services">Emergency Callouts</a></li>
-          <li><a href="index.html#services">Boiler Installation</a></li>
-          <li><a href="index.html#services">Boiler Repair</a></li>
-          <li><a href="index.html#services">Cooker &amp; Hob Fitting</a></li>
-          <li><a href="index.html#services">Safety Checks</a></li>
+          <li><a href="emergency-callouts.html">Emergency Callouts</a></li>
+          <li><a href="boiler-installs.html">Boiler Installation</a></li>
+          <li><a href="boiler-servicing.html">Boiler Servicing</a></li>
+          <li><a href="safety-checks.html">Safety Checks</a></li>
+          <li><a href="oil-boilers-tanks.html">Oil Boilers &amp; Tanks</a></li>
         </ul>
       </div>
       <div>
@@ -241,26 +939,71 @@
   </div>
 </footer>
 
-<div class="sticky-call">
-  <a href="tel:+447833722922"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now on 07833 722922</a>
-</div>
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/447833722922?text=Hi%20Pro%20Flame%20Gas%20Services%2C%20I%20have%20a%20question%20about%20your%20terms." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contact on WhatsApp">
+  <svg class="icon" viewBox="0 0 24 24">
+    <path d="M17.47 14.38c-.29-.15-1.7-.84-1.96-.93-.26-.1-.46-.15-.65.15-.2.29-.75.93-.92 1.12-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.08-.15-.65-1.58-.9-2.16-.24-.58-.48-.5-.65-.5-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.7-.7 1.94-1.37.24-.68.24-1.25.17-1.37-.07-.12-.26-.2-.55-.34z"/>
+    <path d="M12 2a10 10 0 00-8.6 15.03L2 22l5.11-1.34A10 10 0 1012 2zm0 18.13a8.09 8.09 0 01-4.14-1.13l-.3-.18-3.08.81.82-3-.19-.31A8.13 8.13 0 1112 20.13z"/>
+  </svg>
+</a>
 
 <script>
-  // Mobile menu
-  (function () {
-    var btn = document.querySelector('.nav-toggle');
-    var panel = document.getElementById('mobile-nav');
-    if (!btn || !panel) return;
-    function close() { panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open menu'); }
-    btn.addEventListener('click', function () {
-      var open = panel.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+// Mobile menu
+(function() {
+  var btn = document.querySelector('.nav-toggle');
+  var panel = document.getElementById('mobile-nav');
+  if (!btn || !panel) return;
+
+  function close() {
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open menu');
+  }
+  btn.addEventListener('click', function() {
+    var open = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  panel.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') close();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') close();
+  });
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 1220) close();
+  });
+
+  // Collapsible groups
+  document.querySelectorAll('.mn-parent').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var group = btn.parentElement;
+      var isOpen = group.classList.contains('open');
+      document.querySelectorAll('.mn-group.open').forEach(function(g) {
+        g.classList.remove('open');
+        g.querySelector('.mn-parent').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        group.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
-    panel.addEventListener('click', function (e) { if (e.target.tagName === 'A') close(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-    window.addEventListener('resize', function () { if (window.innerWidth > 1220) close(); });
-  })();
+  });
+})();
+
+// Sticky header
+(function() {
+  var header = document.getElementById('siteHeader');
+  if (!header) return;
+  function onScroll() {
+    if (window.scrollY > 60) { header.classList.add('scrolled'); }
+    else { header.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 </script>
+
 </body>
 </html>
